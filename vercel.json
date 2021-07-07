@@ -3,7 +3,7 @@
     "api/index.php": {
       "runtime": "vercel-php@0.4.0",
       "memory": 4096,
-      "maxDuration": 99999
+      "maxDuration": 900
     }
   },
   "rewrites": [
