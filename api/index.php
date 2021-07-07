@@ -9,6 +9,11 @@ class db{
     private function connect(){
         try{
             $this->link = new SQLite3('/tmp/db.sqlite');
+            $this->link->query('CREATE TABLE IF NOT EXISTS "visits" (
+                "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                "url" VARCHAR,
+                "time" DATETIME
+            )');
         }catch(PDOException $e){
             die('Не могу подключиться к БД!!!');
         }
