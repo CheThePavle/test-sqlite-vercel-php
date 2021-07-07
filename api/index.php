@@ -41,9 +41,12 @@ class db{
         $keyArray = array_keys($params);
         $i = 0;
         foreach ($params as $key) {
-            $stmt->bindValue($keyArray[$i++], $key);
+            if (($stmt->bindValue($keyArray[$i++], $key)) != 1) {
+                return 0; //Ошибка при передачи параметров в запрос.
+            }
         }
-        return $stmt->execute();
+        $stmt->execute();
+        return 1;
     }
 }
 
@@ -54,7 +57,7 @@ $params = [
     ':url'=>'test1',
     ':time'=>'urlsssss'
 ];
-$test->make('INSERT INTO "visits" ("url", "time") VALUES (:url, :time)', $params);
+print_r($test->make('INSERT INTO "visits" ("url", "time") VALUES (:url, :time)', $params));
 
 //$params = [
 //    ':id'=>839
