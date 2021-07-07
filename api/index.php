@@ -8,7 +8,7 @@ class db{
 
     private function connect(){
         try{
-            $this->link = new SQLite3('db.sqlite');
+            $this->link = new SQLite3('/tmp/db.sqlite');
         }catch(PDOException $e){
             die('Не могу подключиться к БД!!!');
         }
